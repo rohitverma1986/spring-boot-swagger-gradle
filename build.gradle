@@ -1,0 +1,22 @@
+group '<ORGANISATION_NAME>'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral();
+    maven {
+        url('http://oss.jfrog.org/artifactory/oss-release-local');
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'){exclude group: 'com.fasterxml', module:'classmate'}
+    compile('com.mangofactory:swagger-springmvc:0.8.8')
+    compile('org.ajar:swagger-spring-mvc-ui:0.1')
+}
+
+mainClassName = 'com.ORG_NAME.application.Application'
