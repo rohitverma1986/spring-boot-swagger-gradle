@@ -1,7 +1,17 @@
 group '<ORGANISATION_NAME>'
 version '1.0'
 
+buildscript{
+    repositories{
+        mavenCentral();
+    }
+    dependencies{
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE');
+    }
+}
+
 apply plugin: 'java'
+apply plugin:'spring-boot'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -17,6 +27,13 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'){exclude group: 'com.fasterxml', module:'classmate'}
     compile('com.mangofactory:swagger-springmvc:0.8.8')
     compile('org.ajar:swagger-spring-mvc-ui:0.1')
+    compile('org.springframework:spring-jdbc')
+    compile('com.h2database:h2')
+    compile('com.fasterxml:classmate:0.8.0')
 }
 
 mainClassName = 'com.ORG_NAME.application.Application'
+
+task wrapper(type:Wrapper){
+    gradleVersion='2.0'
+}
